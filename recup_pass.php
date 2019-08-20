@@ -1,6 +1,14 @@
 <?php
 include_once 'includes/config.php';
 
+// PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require (WEBPATH.'classes/vendor/phpmailer/phpmailer/src/Exception.php');
+require (WEBPATH.'classes/vendor/phpmailer/phpmailer/src/PHPMailer.php');
+require (WEBPATH.'classes/vendor/phpmailer/phpmailer/src/SMTP.php');
+
 // Une fois le formulaire envoyé
 if(isset($_POST["recuperationpass"]) && $_POST['recuperationpass']) {
 
@@ -25,7 +33,7 @@ if(isset($_POST["recuperationpass"]) && $_POST['recuperationpass']) {
 	}
 
 	//reCaptcha
-	$secret = "6Ld6fVQUAAAAAFxA_BFWyMBKj82stKKwz5KxAGpD";
+	$secret = "6LfXhLMUAAAAAEbRoHY9EWDj7S0SmT21BYgCac1r";
 	$response = $_POST['g-recaptcha-response'];
 	$remoteip = $_SERVER['REMOTE_ADDR'];
 	$api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
@@ -45,20 +53,61 @@ if(isset($_POST["recuperationpass"]) && $_POST['recuperationpass']) {
 		$new_password = fct_passwd(); //création d'un nouveau mot de passe
 		$hashedpassword = $user->password_hash($new_password, PASSWORD_BCRYPT); // cryptage du password
 
-		//On crée le mail
+		/*
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 		$headers .= 'From: '.SITENAMELONG.' <'.SITEMAIL.'>'."\r\n";
-		//$headers .= '\r\n';
+		*/
 
-		$objet = 'Votre nouveau mot de passe sur '.SITENAMELONG;
+		$subject = 'Votre nouveau mot de passe sur '.SITENAMELONG;
 
-		$message = "Bonjour,<br>\n";
-		$message .= "Vous avez demandé un nouveau mot de passe pour votre compte sur " . SITEURL . ".<br>\n";
-		$message .= "Votre nouveau mot de passe est : " . $new_password . "<br>\n\n";
-		$message .= "Cordialement,<br>\n\n";
-		$message .= "L'equipe de " . SITENAMELONG;
+		$body = "Bonjour,<br>\n";
+		$body .= "Vous avez demandé un nouveau mot de passe pour votre compte sur " . SITENAMELONG . ".<br>\n";
+		$body .= "Votre nouveau mot de passe est : " . $new_password . "<br>\n\n";
+		$body .= "Cordialement,<br>\n\n";
+		$body .= "L'equipe de " . SITENAMELONG;
 
+		$emaildest = $row1['email'];
+
+		$mail = new PHPMailer;
+		$mail->CharSet = 'UTF-8';
+
+		$mail->isSMTP();                        // Active l'envoi via SMTP
+		$mail->Host = 'smtp.gmail.com';         // À remplacer par le nom de votre serveur SMTP
+		$mail->SMTPAuth = true;                 // Active l'authentification par SMTP
+		$mail->Username = 'tornzen@gmail.com';  // Nom d'utilisateur SMTP (votre adresse email complète)
+		$mail->Password = 'AGznNxQYv1\w"pNp';   // Mot de passe de l'adresse email indiquée précédemment
+		$mail->Port = 465;                      // Port SMTP
+		$mail->SMTPSecure = "ssl";              // Utiliser SSL
+		$mail->isHTML(true);                    // Format de l'email en HTML
+
+		$mail->From = SITEMAIL; 		// L'adresse mail de l'emetteur du mail (en général identique à l'adresse utilisée pour l'authentification SMTP)
+		$mail->FromName = 'ft4a.xyz';           // Le nom de l'emetteur qui s'affichera dans le mail
+		$mail->addAddress($emaildest);          // Destinataire
+
+		$mail->addReplyTo(SITEMAIL);            // Pour ajouter l'adresse à laquelle répondre (en général celle de la personne ayant rempli le formulaire)
+		
+		$mail->Subject = $subject;  // Le sujet de l'email
+		$mail->Body    = $body;       // Le contenu du mail en HTML
+
+		if(!$mail->send()) {
+			echo '<div class="alert-msg rnd8 error">';
+			echo '<span class="fa fa-warning"></span>&nbsp;Le message ne peut être envoyé :( <br>';
+			echo 'Erreur: ' . $mail->ErrorInfo . '</div><br><br>';
+		} 
+		else {
+			// si tout est ok, le mail a été envoyé
+			//mise à jour BD avec le nouveau mot de passe utilisateur
+                        $stmt = $db->prepare('UPDATE blog_members SET password = :password WHERE email = :email') ;
+                        $stmt->execute(array(
+                                ':password' => $hashedpassword,
+                                ':email' => $email
+                        ));
+
+                	header("Location: /recup_pass.php?action=ok");
+		}
+
+		/*
 		if(!mail($row1['email'], $objet, $message, $headers)) {
 			$error[] = "Problème lors de l'envoi du mail.";
 		}
@@ -73,6 +122,7 @@ if(isset($_POST["recuperationpass"]) && $_POST['recuperationpass']) {
 	
 		header("Location: /recup_pass.php?action=ok");
 		}
+		 */
 
 		} // captcha validation
 
@@ -117,7 +167,7 @@ include_once 'includes/header-nav.php';
 	        </label>
 		<br>
 		<label for="verif_box">Anti-spam : <br>
-			<div class="g-recaptcha" data-sitekey="6Ld6fVQUAAAAAPv0dCvpcwmDkTkTTaGUl6PYOF8o"></div>
+			<div class="g-recaptcha" data-sitekey="6LfXhLMUAAAAAGRHCePzOA2ZaqDvvRitpMtL3duj"></div>
 		</label>
      	      </div>
 	      <br><br><br><br><br><br><br><br><br>
