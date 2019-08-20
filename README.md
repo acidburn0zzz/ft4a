@@ -7,7 +7,7 @@ Il s’inspire du projet freetorrent.fr, abandonné en juillet 2019.
 
 ft4a signifie : Free Torrents For All
 
-### Architecture du site :
+### Architecture du site
 Le site tourne actuellement sur un server Ubuntu 18.04.
 Le site possède l'architecture suivante :
    /web : fichiers php et html
