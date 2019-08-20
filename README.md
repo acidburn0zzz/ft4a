@@ -48,7 +48,8 @@ ExecStop=/usr/bin/killall -w -s 2 /home/mumbly/xbt/Tracker/xbt_tracker
 WorkingDirectory=/home/USER/xbt/Tracker
 
 [Install]
-WantedBy=default.target```
+WantedBy=default.target
+```
 
 ### Partie Administration
 Le 1er membre inscrit (ID #1) est l'admin du site qui à accès à tous les outils d'administration :
