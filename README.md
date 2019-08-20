@@ -10,9 +10,9 @@ ft4a signifie : Free Torrents For All
 ### Architecture du site
 Le site tourne actuellement sur un server Ubuntu 18.04.
 Le site possède l'architecture suivante :
-   /web : fichiers php et html
-   /private : crontab.php (délestage de la table xbt_announce_log
-   /logs : access.log et error.log
+- /web : fichiers php et html
+- /private : crontab.php (délestage de la table xbt_announce_log
+- /logs : access.log et error.log
 
 ### PHPMailer
 L'envoi de mails (signup.php, contact.php et recup_pass.php) se fait grâce à PHPMailer (https://github.com/PHPMailer/PHPMailer) installé avec Composer
