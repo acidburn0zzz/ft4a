@@ -119,7 +119,7 @@ include_once 'includes/header-nav.php';
                 }
 
 		// reCaptcha
-		$secret = "6LfXhLMUAAAAAEbRoHY9EWDj7S0SmT21BYgCac1r";
+		$secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 		$response = $_POST['g-recaptcha-response'];
 		$remoteip = $_SERVER['REMOTE_ADDR'];
 		$api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
@@ -180,8 +180,8 @@ include_once 'includes/header-nav.php';
                                 	$mail->isSMTP();                        // Active l'envoi via SMTP
                                 	$mail->Host = 'smtp.gmail.com';         // À remplacer par le nom de votre serveur SMTP
                                 	$mail->SMTPAuth = true;                 // Active l'authentification par SMTP
-                                	$mail->Username = 'tornzen@gmail.com';  // Nom d'utilisateur SMTP (votre adresse email complète)
-                                	$mail->Password = 'AGznNxQYv1\w"pNp';   // Mot de passe de l'adresse email indiquée précédemment
+                                	$mail->Username = 'xxxxxxxxxxxxxxxxx';  // Nom d'utilisateur SMTP (votre adresse email complète)
+                                	$mail->Password = 'xxxxxxxxxxxxxxxxx';   // Mot de passe de l'adresse email indiquée précédemment
                                 	$mail->Port = 465;                      // Port SMTP
                                 	$mail->SMTPSecure = "ssl";              // Utiliser SSL
                                 	$mail->isHTML(true);                    // Format de l'email en HTML
@@ -251,7 +251,7 @@ include_once 'includes/header-nav.php';
 			</label>
 			<br>
 			<label for="captcha">Anti-spam : 
-   				<div class="g-recaptcha" data-sitekey="6LfXhLMUAAAAAGRHCePzOA2ZaqDvvRitpMtL3duj"></div>
+   				<div class="g-recaptcha" data-sitekey="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
 			</label>
 		   </div>
                    <br><p>
