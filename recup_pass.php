@@ -33,7 +33,7 @@ if(isset($_POST["recuperationpass"]) && $_POST['recuperationpass']) {
 	}
 
 	//reCaptcha
-	$secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+	$secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 	$response = $_POST['g-recaptcha-response'];
 	$remoteip = $_SERVER['REMOTE_ADDR'];
 	$api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
@@ -76,7 +76,7 @@ if(isset($_POST["recuperationpass"]) && $_POST['recuperationpass']) {
 		$mail->Host = 'smtp.gmail.com';         // À remplacer par le nom de votre serveur SMTP
 		$mail->SMTPAuth = true;                 // Active l'authentification par SMTP
 		$mail->Username = 'xxxxxxxxxxxxxxxxx';  // Nom d'utilisateur SMTP (votre adresse email complète)
-		$mail->Password = 'xxxxxxxxxxxxxxxx';   // Mot de passe de l'adresse email indiquée précédemment
+		$mail->Password = 'xxxxxxxxxxxxxxxxx';  // Mot de passe de l'adresse email indiquée précédemment
 		$mail->Port = 465;                      // Port SMTP
 		$mail->SMTPSecure = "ssl";              // Utiliser SSL
 		$mail->isHTML(true);                    // Format de l'email en HTML
@@ -167,7 +167,7 @@ include_once 'includes/header-nav.php';
 	        </label>
 		<br>
 		<label for="verif_box">Anti-spam : <br>
-			<div class="g-recaptcha" data-sitekey="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
+			<div class="g-recaptcha" data-sitekey="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
 		</label>
      	      </div>
 	      <br><br><br><br><br><br><br><br><br>
