@@ -38,6 +38,7 @@ Les fichiers concernés sont :
 - signup.php
 - contact.php
 - recup_pass.php
+
 Recaptcha de Google protège chaque formulaire d'envoi de mail. Vous devez donc créer un compte sur https://www.google.com/recaptcha et rentrer votre clé de site ET votre clé privée dans les 3 fichiers qui envoient des mails, cités plus haut.
 
 ### SQL
