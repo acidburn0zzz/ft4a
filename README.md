@@ -14,6 +14,24 @@ Le site possède l'architecture suivante :
 - /private : crontab.php (délestage de la table xbt_announce_log
 - /logs : access.log et error.log
 
+### Rewrite Nginx
+Des règles de rewrite sont indispensables pour Nginx pour les archives, les licences, les catégories et la page unique pour chaque torrent (viewpost.php) :
+```
+rewrite ^/c-(.*)$ /catpost.php?id=$1 last;
+rewrite ^/l-(.*)$ /licpost.php?id=$1 last;
+rewrite ^/a-(.*)-(.*)$ /archives.php?month=$1&year=$2 last;
+
+if (!-d $request_filename){
+    set $rule_2 1$rule_2;
+}
+if (!-f $request_filename){
+    set $rule_2 2$rule_2;
+}
+if ($rule_2 = "21"){
+    rewrite ^/(.*)$ /viewpost.php?id=$1 last;
+}
+```
+
 ### PHPMailer
 L'envoi de mails se fait grâce à PHPMailer (https://github.com/PHPMailer/PHPMailer) installé avec Composer.
 Les fichiers concernés sont :
