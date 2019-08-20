@@ -86,7 +86,7 @@ include_once 'includes/header-nav.php';
                         	<td rowspan="7" class="center" style="vertical-align:middle;"><img style="max-width:100px;" src="/images/avatars/<?php echo html($row['avatar']); ?>" alt="Avatar de <?php echo html($row['username']); ?>" /></td>
                         <?php } ?>
                         </tr>
-                        <tr><th>Pseudo :</th><td><?php echo html($row['username']); ?> <a href="/messages_envoyer.php?destid=<?php echo html($row['memberID']); ?>&destuser=<?php echo html($row['username']); ?>"> <span class="fa fa-envelope-o"></span></a>
+                        <tr><th>Pseudo :</th><td><?php echo html($row['username']); ?> <a href="/messages_envoyer.php?destid=<?php echo html($row['memberID']); ?>&destuser=<?php echo html($row['username']); ?>"> <i class="fas fa-envelope"></i></span></a>
                         <?php
                         if($row['memberID'] == 1) {
                         	//echo '<span style="font-weight: bold; color: green;"> [ Webmaster ]</span> | Jabber : mumbly_58 AT jabber.fr';

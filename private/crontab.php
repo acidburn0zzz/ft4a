@@ -2,8 +2,8 @@
 
 //Identifiants SQL
 define('DBHOST','localhost');
-define('DBUSER','xxxxxxxxxxx');
-define('DBPASS','xxxxxxxxxxxxxxxxxxx');
+define('DBUSER','xxxxxxxxx');
+define('DBPASS','xxxxxxxxx');
 define('DBNAME','xxxxxxxxx');
 
 //Connexion SQL

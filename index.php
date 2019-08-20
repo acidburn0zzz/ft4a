@@ -19,13 +19,12 @@ include_once 'includes/header-nav.php';
 
 	<section class="calltoaction opt1 clear">
 		<p class="font-medium bold">Bienvenue sur <?php echo SITENAME; ?> !</p>
-			<p class="justify">
-			ft4a.xyz est un projet visant :<br>
-			- à créer et maintenir un front-end simple et pratique au tracker bittorrent XBTT (php + mysql)<br>
-			- à créer et animer une communauté de partageurs et d'utilisateurs de médias sous licence libre ou licence de libre diffusion<br>
-			Il s’inspire du projet freetorrent.fr, abandonné en juillet 2019.<br>
-			ft4a signifie : Free Torrents For All
-			</p>
+		<p class="font-small justify" style="margin-left:20px;">
+			<i class="fab fa-github"></i> Le code du site est sur <a href="https://github.com/citizenz7/ft4a">Github</a><br>
+			<span style="color:red; bold;"><i class="fas fa-exclamation-circle"></i> [20/08/19]</span> - Le tri des Catégories et Licences (footer) ne focntionne pas et renvoie toujours le même résultat. <span style="color:red;">HELP! demandé.</span><br>
+			<span style="color:green; bold;"><i class="fas fa-exclamation-circle"></i> [20/08/19]</span> - Problème avec l'envoi de mails RESOLU. Les derniers comptes créés qui n'avaient pas reçu le mail d'activation ont tous été validés manuellement.<br>
+		<br><br>
+		</p>
 	</section>
 
 	<!-- ### ARTICLES ###-->

@@ -1,6 +1,13 @@
 <?php
 include_once 'includes/config.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require (WEBPATH.'classes/vendor/phpmailer/phpmailer/src/Exception.php');
+require (WEBPATH.'classes/vendor/phpmailer/phpmailer/src/PHPMailer.php');
+require (WEBPATH.'classes/vendor/phpmailer/phpmailer/src/SMTP.php');
+
 //Si l'utilisateur est déjà loggé, on le renvoie sur l'index
 if($user->is_logged_in()) {
 	header('Location: ./');
@@ -112,7 +119,7 @@ include_once 'includes/header-nav.php';
                 }
 
 		// reCaptcha
-		$secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		$secret = "6LfXhLMUAAAAAEbRoHY9EWDj7S0SmT21BYgCac1r";
 		$response = $_POST['g-recaptcha-response'];
 		$remoteip = $_SERVER['REMOTE_ADDR'];
 		$api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
@@ -167,25 +174,20 @@ include_once 'includes/header-nav.php';
 					<p>Cordialement,
 					<br>".SITEAUTOR.", webmaster de ".SITENAMELONG."</p>";
 					
-					// PHPMailer
-					require_once(WEBPATH.'classes/PHPMailer/Exception.php');
-                                	require_once(WEBPATH.'classes/PHPMailer/PHPMailer.php');
-                                	require_once(WEBPATH.'classes/PHPMailer/SMTP.php');
-
 					$mail = new PHPMailer;
                                 	$mail->CharSet = 'UTF-8';
 
                                 	$mail->isSMTP();                        // Active l'envoi via SMTP
-                                	$mail->Host = 'xxxxxxxxxxxxxx';         // À remplacer par le nom de votre serveur SMTP
+                                	$mail->Host = 'smtp.gmail.com';         // À remplacer par le nom de votre serveur SMTP
                                 	$mail->SMTPAuth = true;                 // Active l'authentification par SMTP
-                                	$mail->Username = 'xxxxxxx@xxxxxxxxx';  // Nom d'utilisateur SMTP (votre adresse email complète)
-                                	$mail->Password = 'xxxxxxxxxxxxxxxx';   // Mot de passe de l'adresse email indiquée précédemment
+                                	$mail->Username = 'tornzen@gmail.com';  // Nom d'utilisateur SMTP (votre adresse email complète)
+                                	$mail->Password = 'AGznNxQYv1\w"pNp';   // Mot de passe de l'adresse email indiquée précédemment
                                 	$mail->Port = 465;                      // Port SMTP
                                 	$mail->SMTPSecure = "ssl";              // Utiliser SSL
                                 	$mail->isHTML(true);                    // Format de l'email en HTML
 
-					$mail->From = SITEMAIL; 		// L'adresse mail de l'emetteur du mail (en général identique à l'adresse utilisée pour l'authentification SMTP)
-                                	$mail->FromName = 'xxxxxxxx';           // Le nom de l'emetteur qui s'affichera dans le mail
+					$mail->From = SITEMAIL; // L'adresse mail de l'emetteur du mail (en général identique à l'adresse utilisée pour l'authentification SMTP)
+                                	$mail->FromName = 'ft4a.xyz';           // Le nom de l'emetteur qui s'affichera dans le mail
                                 	$mail->addAddress($to);    		// Destinataire
 
 					$mail->addReplyTo(SITEMAIL);               // Pour ajouter l'adresse à laquelle répondre (en général celle de la personne ayant rempli le formulaire)
@@ -249,7 +251,7 @@ include_once 'includes/header-nav.php';
 			</label>
 			<br>
 			<label for="captcha">Anti-spam : 
-   				<div class="g-recaptcha" data-sitekey="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
+   				<div class="g-recaptcha" data-sitekey="6LfXhLMUAAAAAGRHCePzOA2ZaqDvvRitpMtL3duj"></div>
 			</label>
 		   </div>
                    <br><p>

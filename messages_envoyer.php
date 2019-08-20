@@ -35,7 +35,7 @@ include_once 'includes/header-nav.php';
 
 		else {
 			//reCaptcha
-			$secret = "6LeoUy4UAAAAAAkT9167mTJxuQYQDZYW3QDs0rDh";
+			$secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 			$response = $_POST['g-recaptcha-response'];
 			$remoteip = $_SERVER['REMOTE_ADDR'];
 			$api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
@@ -115,7 +115,7 @@ if(isset($error)){
 </label>
 </div>
 <br>
-<div class="g-recaptcha" data-sitekey="6LeoUy4UAAAAAEZu8KlzMYVtXK63LTlmSXB0gjR5"></div>
+<div class="g-recaptcha" data-sitekey="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
 <br><br>
 <p class="right">
 <input type="submit" class="button small orange" name="go" value="Envoyer">

@@ -9,9 +9,9 @@ date_default_timezone_set('Europe/Paris');
 
 //SQL--------------------------------------------------------------------------------
 define('DBHOST','localhost');
-define('DBUSER','xxxxxxxx');
-define('DBPASS','xxxxxxxxxxxxxxxxxx');
-define('DBNAME','xxxxxxxxxxxxxx');
+define('DBUSER','xxxxxxxxxx');
+define('DBPASS','xxxxxxxxxx');
+define('DBNAME','xxxxxxxxxx');
 
 try {
 	$db = new PDO("mysql:host=".DBHOST.";port=8889;dbname=".DBNAME, DBUSER, DBPASS);
@@ -34,8 +34,8 @@ define('SITEURL','http://www.ft4a.xyz');
 define('SITEURLHTTPS','https://www.ft4a.xyz');
 define('SITEMAIL','xxxxxxxxxxxxxxxxxxxxxx');
 define('SITEOWNORNAME','xxxxxxxxxxxxxxx');
-define('SITEAUTOR','xxxxxxxxxxxxxxx');
-define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxx');
+define('SITEAUTOR','xxxxxxxx');
+define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 //define('SITEDISQUS','xxxxxxxxxxxx');
 define('ANNOUNCEPORT','55555');
 define('SITEVERSION','2.0.13-a');
@@ -72,6 +72,13 @@ $REP_IMAGES_AVATARS = '/var/www/ft4a.xyz/web/images/avatars/'; // Répertoires d
 // Edito - Page d'accueil
 $EDITO = '
 <p class="justify">
+	ft4a.xyz est un projet visant :
+	<ul>
+		<li>à créer et maintenir un front-end simple et pratique au tracker bittorrent XBTT (php + mysql)</li>
+		<li>à créer et animer une communauté de partageurs et d\'utilisateurs de médias sous licence libre ou licence de libre diffusion</li>
+	</ul>
+	Il s’inspire du projet freetorrent.fr, abandonné en juillet 2019.<br>
+	ft4a signifie : Free Torrents For All.
 </p>
 ';
 

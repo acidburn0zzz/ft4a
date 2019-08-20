@@ -39,6 +39,7 @@
 	   <li><span class="fa fa-lock"></span>&nbsp;<a href="<?php echo SITEURLHTTPS; ?>">Version HTTPS</a></li>
       </ul>
       <div class="fl_right">
+	  <a class="font-large" href="https://github.com/citizenz7/ft4a"><i class="fab fa-github"></i></a>&nbsp;&nbsp;
 	  <a class="font-large" href="https://discord.gg/7stWC3D"><i class="fab fa-discord"></i></a>&nbsp;&nbsp;
 	  <a class="font-large" href="/rss.php"><i class="fas fa-rss"></i></a>
       </div>
