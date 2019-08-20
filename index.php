@@ -161,7 +161,7 @@ include_once 'includes/header-nav.php';
 		
 	<div class="divider2"></div>
 	
-	<h2 class="font-large">Fretorrent.fr vous recommande :</h2>
+	<h2 class="font-large"><?php echo SITENAMELONG; ?> vous recommande :</h2>
 		
         <article id="recommande" class="one_third first blog-reco">
 	<?php
