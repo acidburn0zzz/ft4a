@@ -6,34 +6,8 @@
        <p class="clear justify"><?php echo $EDITO; ?></p>
     </div>
 
-<!--	
-    <div class="one_quarter">
-      <h2 class="footer_title">Va falloir trouver autre chose</h2>
-    </div>
--->
-
     <div class="one_quarter">
        <h2 class="footer_title">Archives</h2>
-	<!--
-      	<form class="rnd5" action="#" method="post">
-        <div class="form-input clear">
-          <label for="ft_author">Name <span class="required">*</span><br>
-            <input type="text" name="ft_author" id="ft_author" value="" size="22">
-          </label>
-          <label for="ft_email">Email <span class="required">*</span><br>
-            <input type="text" name="ft_email" id="ft_email" value="" size="22">
-          </label>
-        </div>
-        <div class="form-message">
-          <textarea name="ft_message" id="ft_message" cols="25" rows="10"></textarea>
-        </div>
-        <p>
-          <input type="submit" value="Submit" class="button small orange">
-          &nbsp;
-          <input type="reset" value="Reset" class="button small grey">
-        </p>
-      	</form>
-	-->
 
 	<select onchange="document.location.href = this.value">
 		<option>Archives : Choisir un mois</option>
@@ -57,7 +31,7 @@
                 <?php
                 $stmt = $db->query('SELECT catTitle, catSlug FROM blog_cats ORDER BY catTitle ASC');
                 while($row = $stmt->fetch()){
-                	echo '<option value="/c-'.html($row['catSlug']).'">'.html($row['catTitle']).'</option>';
+                	echo '<option value="c-'.html($row['catSlug']).'">'.html($row['catTitle']).'</option>';
                 }
                 ?>
 	</select>
@@ -71,7 +45,7 @@
                 <?php
                 $stmt = $db->query('SELECT licenceTitle, licenceSlug FROM blog_licences ORDER BY licenceTitle ASC');
                 while($row = $stmt->fetch()){
-                	echo '<option value="/l-'.html($row['licenceSlug']).'">'.html($row['licenceTitle']).'</option>';
+                	echo '<option value="l-'.html($row['licenceSlug']).'">'.html($row['licenceTitle']).'</option>';
                 }
                 ?>
 	</select>
