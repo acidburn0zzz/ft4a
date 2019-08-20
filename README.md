@@ -34,7 +34,7 @@ Le debug est ici : http://VOTRE_SITE.com:xbt_port/debug
 
 XBT doit donc être "lancé" avec systemd ou directement dans un "screen" pour que le site "fonctionne".
 Exemple avec systemd (USER est à remplacer. Le chemin pour xbt_tracker est à adapter si besoin...) :
-`[Unit]
+```[Unit]
 Description=XBT Tracker
 After=network.target mysql.service
 #Wants=mysql.service
@@ -48,7 +48,7 @@ ExecStop=/usr/bin/killall -w -s 2 /home/mumbly/xbt/Tracker/xbt_tracker
 WorkingDirectory=/home/USER/xbt/Tracker
 
 [Install]
-WantedBy=default.target`
+WantedBy=default.target```
 
 ### Partie Administration
 Le 1er membre inscrit (ID #1) est l'admin du site qui à accès à tous les outils d'administration :
