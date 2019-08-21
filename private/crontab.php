@@ -18,5 +18,5 @@ define('DBNAME','xxxxxxxxx');
 $db = new PDO("mysql:host=".DBHOST.";port=8889;dbname=".DBNAME, DBUSER, DBPASS);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmt = $db->query('DELETE FROM xbt_announce_log WHERE mtime < (NOW() - INTERVAL 59 MINUTE)');
+$stmt = $db->query('DELETE FROM xbt_announce_log WHERE mtime < UNIX_TIMESTAMP(NOW() - INTERVAL 2 HOUR)');
 ?>
