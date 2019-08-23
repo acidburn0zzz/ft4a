@@ -39,19 +39,22 @@ Les fichiers concernés sont :
 - contact.php
 - recup_pass.php
 
+### ReCaptcha
 Recaptcha de Google protège chaque formulaire d'envoi de mail. Vous devez donc créer un compte sur https://www.google.com/recaptcha et rentrer votre clé de site ET votre clé privée dans les 3 fichiers qui envoient des mails, cités plus haut.
 
 ### SQL
 La base MySQL comprend le stables pour le site ET pour XBT tracker.
 
 ### XBT Tracker
-XBT ne semble plus disponible depuis le site traditionnel d'Olaf Van der Spek (http://xbtt.sourceforge.net/tracker/).
-Vous pouvez trouver le code ici : https://github.com/citizenz7/xbt. L'installation est détaillée dans le Readme.
+XBT (Olaf Van der Spek) est disponible ici : https://github.com/OlafvdSpek/xbt
+Vous pouvez également trouver le code sur mon Github : https://github.com/citizenz7/xbt.
+L'installation est détaillée dans le Readme.
+
 XBT est le tracker bittorrent. C'est lui qui "gère" toutes les connexions.
 Vous pouvez vérifier les stats du tracker en vous rendant sur http://VOTRE_SITE.com:xbt_port/stats (exemple : http://ft4a.xyz:55555/stats).
 Le debug est ici : http://VOTRE_SITE.com:xbt_port/debug
 
-XBT doit donc être "lancé" avec systemd ou directement dans un "screen" pour que le site "fonctionne".
+XBT doit donc être "lancé" avec systemd ou directement dans un "screen" pour que le système de torrents "fonctionne".
 Exemple avec systemd (USER est à remplacer. Le chemin pour xbt_tracker est à adapter si besoin...) :
 ```[Unit]
 Description=XBT Tracker
@@ -71,13 +74,13 @@ WantedBy=default.target
 ```
 
 ### Partie Administration
-Le 1er membre inscrit (ID #1) est l'admin du site qui à accès à tous les outils d'administration :
+Le 1er membre inscrit (ID #1) est l'admin du site qui à accès à tous les outils d'administration, c'est à dire :
 - la partie admin du site : http://VOTRE_SITE.com/admin
 - l'édition, suppression de membres et de torrents directement sur les pages du site 
 
 ### Membres
-Les membres (inscrits) peuvent télécharger et uploader des torrents.
-Ils ont accès un espace personnel d'administration de leur profil (changement du mot de passe, e-mail, ajout/suppression d'un avatar personnalisé, ...)
+Les membres doivent être inscrits pour télécharger et uploader des torrents.
+Ils ont accès à un espace personnel d'administration de leur profil (changement du mot de passe, e-mail, ajout/suppression d'un avatar personnalisé, ...)
 
 ### Messagerie interne
 Une messagerie interne permet aux membres de communiquer entre eux.
