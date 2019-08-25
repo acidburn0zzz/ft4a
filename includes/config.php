@@ -83,7 +83,7 @@ $EDITO = '
 ';
 
 // Deconnexion auto au bout de 10 minutes
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+/*if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	if (isset($_SESSION['time'])) {
         	if ($_SESSION['time'] + 600 > time()) {
                 	$_SESSION['time'] = time();
@@ -95,7 +95,25 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	else {
 		$_SESSION['time'] = time();
 	}
+}*/
+
+// 15 minutes auto-deco
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        if (isset($_SESSION['time'])) {
+                $idletime=900; //after 15 minutes (60 sec x 15) the user gets logged out
+                //$idletime=120; // 2 minutes for tests
+                if (time()-$_SESSION['time']>$idletime){
+                        header('Location: '.SITEURLHTTPS.'/logout.php');
+                }
+                else {
+                        $_SESSION['time'] = time();
+                }
+        }
+        else {
+                $_SESSION['time'] = time();
+        }
 }
+
 
 // -----------------------------------------------------------------------------------
 // CLASSES
