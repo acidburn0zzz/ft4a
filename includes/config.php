@@ -38,8 +38,8 @@ define('SITEAUTOR','xxxxxxxx');
 define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 //define('SITEDISQUS','xxxxxxxxxxxx');
 define('ANNOUNCEPORT','55555');
-define('SITEVERSION','2.0.13-a');
-define('SITEDATE','18/08/19');
+define('SITEVERSION','2.1.5');
+define('SITEDATE','28/08/19');
 define('COPYDATE','2019');
 define('CHARSET','UTF-8');
 //Nb de torrents sur la page ... torrents.php
