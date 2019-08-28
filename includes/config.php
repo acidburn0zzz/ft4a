@@ -4,85 +4,69 @@
 ob_start();
 session_start();
 
-//set timezone
-date_default_timezone_set('Europe/Paris');
+//SQL
+include_once 'sql.php';
 
-//SQL--------------------------------------------------------------------------------
-define('DBHOST','localhost');
-define('DBUSER','xxxxxxxxxx');
-define('DBPASS','xxxxxxxxxx');
-define('DBNAME','xxxxxxxxxx');
-
-try {
-	$db = new PDO("mysql:host=".DBHOST.";port=8889;dbname=".DBNAME, DBUSER, DBPASS);
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch(PDOException $e) {
-	//show error
-    	echo '<p>'.$e->getMessage().'</p>';
-    	exit;
-}
-
-//PARAMETRES DU SITE-----------------------------------------------------------------
-define('WEBPATH','/var/www/ft4a.xyz/web/');
+//Paramètres du site
 define('SITENAME','ft4a');
 define('SITENAMELONG','ft4a.xyz');
+define('WEBPATH','/var/www/'.SITENAMELONG.'/web/'); //Chemin complet pour les fichiers du site
 define('SITESLOGAN','Free Torrents For All');
 define('SITEDESCRIPTION','Bittorrent tracker for free - as in freedom - and opensource media ONLY!');
 define('SITEKEYWORDS','bittorrent,torrent,ft4a,partage,échange,peer,p2p,licence,license,medias,libre,free,opensource,gnu,téléchargement,download,upload,xbt,tracker,php,mysql,linux,bsd,os,système,system,exploitation,debian,arch,fedora,ubuntu,manjaro,mint,film,movie,picture,video,mp3,musique,music,mkv,avi,mpeg,gpl,creativecommons,cc,mit,apache,cecill,artlibre');
-define('SITEURL','http://www.ft4a.xyz');
-define('SITEURLHTTPS','https://www.ft4a.xyz');
-define('SITEMAIL','xxxxxxxxxxxxxxxxxxxxxx');
-define('SITEOWNORNAME','xxxxxxxxxxxxxxx');
+define('SITEURL','http://www.'.SITENAMELONG);
+define('SITEURLHTTPS','https://www.'.SITENAMELONG);
+define('SITEMAIL','xxxxxxxxxxxxxxxxxxxxxxx');
+define('SITEOWNORNAME','xxxxxxxxxxxxxxxxxxx');
 define('SITEAUTOR','xxxxxxxx');
-define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-//define('SITEDISQUS','xxxxxxxxxxxx');
-define('ANNOUNCEPORT','55555');
+define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxxxx');
+define('ANNOUNCEPORT','55555'); //Port pour l'announce
 define('SITEVERSION','2.1.5');
 define('SITEDATE','28/08/19');
 define('COPYDATE','2019');
 define('CHARSET','UTF-8');
-//Nb de torrents sur la page ... torrents.php
-define('NBTORRENTS','15');
-// Announce
+define('NBTORRENTS','10'); //Nb de torrents sur la page torrents.php
+
+//URL + port pour l'announce
 $ANNOUNCEURL = SITEURL.':'.ANNOUNCEPORT.'/announce';
-// Répertoire des images
-$REP_IMAGES = '/var/www/ft4a.xyz/web/images/';
+
+//Chemin complet pour le répertoire des images
+$REP_IMAGES = '/var/www/'.SITENAMELONG.'/web/images/';
 
 //Paramètres pour le fichier torrent (upload.php)
-define('MAX_FILE_SIZE', 1048576); // Taille maxi en octets du fichier .torrent
-$WIDTH_MAX = 500; // Largeur max de l'image en pixels
-$HEIGHT_MAX = 500; // Hauteur max de l'image en pixels
-$REP_TORRENTS = '/var/www/ft4a.xyz/web/torrents/'; // Répertoire des fichiers .torrents
+define('MAX_FILE_SIZE', 1048576); //Taille maxi en octets du fichier .torrent
+$WIDTH_MAX = 500; //Largeur max de l'image en pixels
+$HEIGHT_MAX = 500; //Hauteur max de l'image en pixels
+$REP_TORRENTS = '/var/www/'.SITENAMELONG.'/web/torrents/'; //Répertoire des fichiers .torrents
 
 //Paramètres pour l'icone de présentation du torrent (index.php, edit-post.php, ...)
 $WIDTH_MAX_ICON = 150; //largeur maxi de l'icone de présentation dut orrent
 $HEIGHT_MAX_ICON = 150; //Hauteur maxi de l'icone de présentation du torrent
-$MAX_SIZE_ICON = 30725; // Taille max en octet de l'icone de présentation du torrent (30 Ko)
-$REP_IMAGES_TORRENTS = '/var/www/ft4a.xyz/web/images/imgtorrents/';
-$WEB_IMAGES_TORRENTS = 'images/imgtorrents/';
+$MAX_SIZE_ICON = 30725; //Taille max en octet de l'icone de présentation du torrent (30 Ko)
+$REP_IMAGES_TORRENTS = '/var/www/'.SITENAMELONG.'/web/images/imgtorrents/'; //Chemin complet du répertoire des images torrents
+$WEB_IMAGES_TORRENTS = 'images/imgtorrents/'; //Chemin web pour les images torrents
 
 //Paramètres pour l'avatar membre (profile.php, edit-profil.php, ...)
-$MAX_SIZE_AVATAR = 51200; // Taille max en octets du fichier (50 Ko)
-$WIDTH_MAX_AVATAR = 200; // Largeur max de l'image en pixels
-$HEIGHT_MAX_AVATAR = 200; // Hauteur max de l'image en pixels
+$MAX_SIZE_AVATAR = 51200; //Taille max en octets du fichier (50 Ko)
+$WIDTH_MAX_AVATAR = 200; //Largeur max de l'image en pixels
+$HEIGHT_MAX_AVATAR = 200; //Hauteur max de l'image en pixels
 $EXTENSIONS_VALIDES = array( 'jpg' , 'png' ); //extensions d'images valides
-$REP_IMAGES_AVATARS = '/var/www/ft4a.xyz/web/images/avatars/'; // Répertoires des images avatar des membres
+$REP_IMAGES_AVATARS = '/var/www/'.SITENAMELONG.'/web/images/avatars/'; //Répertoires des images avatar des membres
 
-// Edito - Page d'accueil
+//Edito - Page d'accueil
 $EDITO = '
 <p class="justify">
-	ft4a.xyz est un projet visant :
-	<ul>
-		<li>à créer et maintenir un front-end simple et pratique au tracker bittorrent XBTT (php + mysql)</li>
-		<li>à créer et animer une communauté de partageurs et d\'utilisateurs de médias sous licence libre ou licence de libre diffusion</li>
-	</ul>
-	Il s’inspire du projet freetorrent.fr, abandonné en juillet 2019.<br>
-	ft4a signifie : Free Torrents For All.
+        '.SITENAMELONG.' est un projet visant :
+        <ul>
+                <li>à créer et maintenir un front-end simple et pratique au tracker bittorrent XBTT (php + mysql)</li>
+                <li>à créer et animer une communauté de partageurs et d\'utilisateurs de médias sous licence libre ou licence de libre diffusion</li>
+        </ul>
+        Il s’inspire du projet freetorrent.fr, abandonné en juillet 2019.<br>
+        ft4a signifie : Free Torrents For All.
 </p>
 ';
 
-// Auto logout session 15 min
+//Deconnexion auto au bout de 15 min
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         if (isset($_SESSION['time'])) {
 
@@ -101,39 +85,39 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         }
 }
 
+
 // -----------------------------------------------------------------------------------
 // CLASSES
 // -----------------------------------------------------------------------------------
 
 //load classes as needed
 function __autoload($class) {
-   
+
    $class = strtolower($class);
 
    //if call from within assets adjust the path
    $classpath = 'classes/class.'.$class . '.php';
    if ( file_exists($classpath)) {
       require_once $classpath;
-   }  
-   
+   }
+
    //if call from within admin adjust the path
    $classpath = '../classes/class.'.$class . '.php';
    if ( file_exists($classpath)) {
       require_once $classpath;
    }
-   
+
    //if call from within admin adjust the path
    $classpath = '../../classes/class.'.$class . '.php';
    if ( file_exists($classpath)) {
       require_once $classpath;
-   }     
-    
+   }
+
 }
 
-$user = new User($db); 
+$user = new User($db);
 
-// On inclut le fichier de fonctions
-// et les fichiers d'encodage et de décodage des torrents 
+//On inclut le fichier de fonctions et les fichiers d'encodage et de décodage des torrents
 require_once('functions.php');
 require_once('BDecode.php');
 require_once('BEncode.php');
