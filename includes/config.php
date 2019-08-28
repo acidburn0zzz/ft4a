@@ -82,21 +82,7 @@ $EDITO = '
 </p>
 ';
 
-// Deconnexion auto au bout de 10 minutes
-/*if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-	if (isset($_SESSION['time'])) {
-        	if ($_SESSION['time'] + 600 > time()) {
-                	$_SESSION['time'] = time();
-             	}
-		else {
-			header ('Location: '.SITEURL.'/logout.php');
-		}
-     	}
-	else {
-		$_SESSION['time'] = time();
-	}
-}*/
-
+// Auto logout session 15 min
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         if (isset($_SESSION['time'])) {
 
