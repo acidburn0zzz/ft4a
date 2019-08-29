@@ -9,7 +9,7 @@ include_once 'sql.php';
 
 //Paramètres du site
 define('SITENAME','ft4a');
-define('SITENAMELONG','ft4a.xyz');
+define('SITENAMELONG','ft4a.fr');
 define('WEBPATH','/var/www/'.SITENAMELONG.'/web/'); //Chemin complet pour les fichiers du site
 define('SITESLOGAN','Free Torrents For All');
 define('SITEDESCRIPTION','Bittorrent tracker for free - as in freedom - and opensource media ONLY!');
